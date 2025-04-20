@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body class="p-4">
+
+    <nav class="flex w-full space-x-4 " >
+        <a class="w-fit px-3 rounded  py-1 bg-black text-white" href="/">Home</a>
+        {% for cat in categories %}
+        <a class="w-fit px-3  rounded py-1 bg-black text-white" href="{% url 'products:cat' slug=cat.slug %}">
+            <p>{{cat.name}}</p>
+        </a>
+        
+        {% endfor %}
+    </nav>
+    
+    <h1 class="text-5xl font-bold">Welcome to The Best PC Parts Shop</h1>
+
+
+    {% block content %}
+        
+    {% endblock %}
+
+</body>
+</html>
