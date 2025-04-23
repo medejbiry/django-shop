@@ -1,13 +1,13 @@
 {% extends 'Home.html' %}
 {% block content %}
-<div class="container mx-auto px-4 mt-5">
+<div class="container mx-auto px-4 mt-5 grid grid-cols-5 gap-10">
     {% for product in products%}
-    <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 justify-center">
+
         <div class="mb-5">
             <div class="bg-white rounded-lg shadow-md flex flex-col h-full">
                 <!-- Product image-->
                 <img
-                class="w-full h-48 object-cover rounded-t-lg"
+                class="w-[80%] mx-auto rounded-t-lg"
                 src="{{ product.image.url  }}"
                 alt="Product image"
                 />
@@ -22,15 +22,14 @@
                 <div class="p-4 pt-0 border-t border-gray-200 bg-transparent">
                     <div class="text-center">
                         <a
-                        href="#"
-                        class="inline-block mt-4 px-4 py-2 border border-gray-800 text-gray-800 rounded hover:bg-gray-800 hover:text-white transition"
+                         href="{% url 'products:page' id=product.id %}"
+                        class="inline-block hover:bg-[#fa6c00] mt-4 px-4 py-2 border border-gray-800 hoverr:border-0 text-gray-800 rounded  hover:text-white transition"
                         >View options</a
                         >
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endfor %}
 </div>
       

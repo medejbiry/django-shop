@@ -1,0 +1,19 @@
+<nav class="flex w-full space-x-4 navBar" >
+    <a class="w-fit px-3 rounded  py-1 text-white" href="/">Home</a>
+    <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'products:list'  %}">Products</a>
+    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='cpu' %}">Processors</a>
+    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='gpu' %}">Graphic Cards</a>
+    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='ram' %}">Ram</a>
+    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='motherboards' %}">MotherBoards</a>
+    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='power-supplies' %}">Power Suplies</a>
+    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='storage' %}">Storage</a>
+    {% if user.is_authenticated %}
+            <form class="logout" action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button>logout</button>
+            </form>
+    {% else %} 
+        <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:register' %}">Register</a>
+        <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:login' %}">Login</a>
+    {% endif %}
+</nav>
