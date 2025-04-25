@@ -1,0 +1,22 @@
+{% extends 'Home.html'%}
+{% block content %}
+    <h1>Cart Page</h1>
+    {% for item in cartItems %}
+        <div class="w-[700px] p-2 grid grid-cols-10 gap-3 content-center  ">
+            <div class="col-span-2">
+                <img class="aspect-square w-full" src="{{item.product.image.url}}" alt="">
+            </div>
+            <div class="col-span-5 flex flex-col justify-between py-4">
+                <p class="text-xl font-bold" >{{ item.product.name }}</p>
+                <p>{{item.product.price}}</p>
+            </div>
+            <div class="col-span-2 flex flex-col  py-4">
+                <input type="number" class="w-10" name="" value="{{ item.quantity }}" id="">
+                <a href="{% url 'cart:remove-item' item.id %}"> - </a>
+                
+            </div>
+        </div>
+        
+    {% endfor %}
+
+{% endblock  %} 

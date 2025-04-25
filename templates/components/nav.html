@@ -1,6 +1,6 @@
 <nav class="flex w-full space-x-4 navBar" >
-    <a class="w-fit px-3 rounded  py-1 text-white" href="/">Home</a>
-    <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'products:list'  %}">Products</a>
+    <a class="w-fit px-3  rounded  py-1 text-white" href="/">Home</a>
+    <a class="w-fit px-3  rounded  py-1 text-white" href="{% url 'products:list'  %}">Products</a>
     <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='cpu' %}">Processors</a>
     <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='gpu' %}">Graphic Cards</a>
     <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='ram' %}">Ram</a>
@@ -12,6 +12,7 @@
                 {% csrf_token %}
                 <button>logout</button>
             </form>
+            <a href="{% url 'cart:page' %}"> Cart </a>
     {% else %} 
         <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:register' %}">Register</a>
         <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:login' %}">Login</a>
