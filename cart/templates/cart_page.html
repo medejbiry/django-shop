@@ -1,22 +1,61 @@
 {% extends 'Home.html'%}
 {% block content %}
-    <h1>Cart Page</h1>
-    {% for item in cartItems %}
-        <div class="w-[700px] p-2 grid grid-cols-10 gap-3 content-center  ">
-            <div class="col-span-2">
-                <img class="aspect-square w-full" src="{{item.product.image.url}}" alt="">
+    <div class="w-full " >
+        <h1>Cart Page</h1>
+
+        <div class="grid grid-cols-6 gap-10 px-10 ">
+            <div class="col-span-4 bg-white space-y-4 rounded-xl cart-container">
+                <div class=" p-2 grid grid-cols-6 text-xl font-bold">
+                    <div class="col-span-3 grid grid-cols-3">
+                        <div>
+                            Product
+                        </div>
+                    </div>
+                    <div class="col-span-3 grid grid-cols-3">
+                        <div class="text-center" >
+                            <p>Price</p>
+                        </div>
+                        <div class="text-center" >
+                            <p>Quantity</p>
+                        </div>
+                        <div class="text-center" >
+                            <p>Total Price</p>
+                        </div>
+                    </div>
+                </div>
+                {% for item in cartItems %}
+                    <div class="grid grid-cols-6">
+                        <div class="col-span-3 grid grid-cols-3">
+                            <div>
+                                <img class="aspect-square w-[70%]" src="{{item.product.image.url}}" alt="">    
+                            </div>
+                            <div class="col-span-2">
+                                <p class="font-semibold text-gray-300" >{{item.product.brand}}</p>
+                                <p class="text-xl font-bold" >{{ item.product.name }}</p>
+                            </div>
+                        </div>
+                        <div class="col-span-3 grid grid-cols-3">
+                            <div class=" flex justify-center items-center">
+                                <p class="text-lg font-semibold" >{{item.product.price}} MAD</p>
+                            </div>
+                            <div class=" flex justify-center items-center">
+                                <input type="number" class="w-10" name="" value="{{ item.quantity }}" id="">
+                                <a href="{% url 'cart:remove-item' item.id %}"> - </a>
+                            </div>
+                            <div class=" flex justify-center items-center">
+                                <p class="text-lg font-semibold text-[#fa6c0086]" >41.0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-px bg-gray-200" >
+                    </div>
+                {% endfor %}
             </div>
-            <div class="col-span-5 flex flex-col justify-between py-4">
-                <p class="text-xl font-bold" >{{ item.product.name }}</p>
-                <p>{{item.product.price}}</p>
-            </div>
-            <div class="col-span-2 flex flex-col  py-4">
-                <input type="number" class="w-10" name="" value="{{ item.quantity }}" id="">
-                <a href="{% url 'cart:remove-item' item.id %}"> - </a>
-                
+            <div class="col-span-2 bg-red-200">
+                test
             </div>
         </div>
         
-    {% endfor %}
+    </div>
 
 {% endblock  %} 

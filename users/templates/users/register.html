@@ -1,16 +1,24 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
     <title>Register</title>
-</head>
-<body>
-    <h1>register a new user</h1>
-<form class="form-with-validation" action="/register/" method="post">
-    {% csrf_token %}
-    {{form}}
-    <button class="form-submit">Submit</button>
-</form>
-</body>
+  </head>
+  <body>
+    <section class="pt-[150px]">
+      <div class="w-[20%] mx-auto text-center">
+        <h1 class="text-3xl font-bold">Create an account</h1>
+        <p class="font-light">Please enter your contact details to register.</p>
+        <form class="form-with-validation" action="/register/" method="post">
+          {% csrf_token %} {{form}}
+          <button class="form-submit">Submit</button>
+        </form>
+        <p>Do you already have an account? <a href="{% url 'users:login' %}" class="text-[#fa6c00] font-semibold">Connect</a></p>
+      </div>
+    </section>
+  </body>
 </html>

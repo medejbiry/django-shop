@@ -1,6 +1,7 @@
 body{
  padding: 0;
  margin: 0;  
+ background-color: #eff3f6;
 }
 .navBar{
     background-color: #fa6c0086;
@@ -8,4 +9,9 @@ body{
 }
 .orongeColor{
     background-color: #fa6c0086;
+}
+.cart-container{
+    padding: 5px 15px;
+    box-shadow: 5px 5px 15px 0 rgb(199, 199, 199);
+
 }

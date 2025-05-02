@@ -1,0 +1,43 @@
+.helptext{
+    display : none;
+}
+
+.form-with-validation{
+
+}
+.form-with-validation > div{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 20px 0;
+}
+.form-with-validation > div >label, input{
+    margin:  10px 0px;
+}
+.form-with-validation > div >label{
+    color: gray;
+    font-weight: 550;
+}
+.form-with-validation > div >input{
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px 0px rgba(128, 128, 128, 0.185);
+}
+.form-submit{
+    color: white;
+    background-color: #b34e01;
+    width: 100%;
+    padding: 5px 0;
+    font-size: large;
+    font-weight: 600;
+    border-radius: 20px;
+}
+.form-submit:hover{
+    background-color: #fa6c00;
+    
+}
+.errorlist > li{
+    color: red;
+    margin: 5px 0;
+}

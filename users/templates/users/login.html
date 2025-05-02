@@ -1,20 +1,28 @@
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <section class="pt-[150px]">
+        <div class="w-[20%] mx-auto text-center">
+    <h1 class="text-3xl font-bold">Login</h1>
 <form class="form-with-validation" action="/login/" method="post">
     {% csrf_token %}
     {{form}}
     {% if request.GET.next %}
         <input type="hidden" name="next" value="{{request.GET.next}}" >
     {% endif%}
-    <button class="form-submit">Submit</button>
+    <button class="form-submit">Log In</button>
+    <p>Don't you have an account? <a href="{% url 'users:login' %}" class="text-[#fa6c00] font-semibold">Subscribe</a></p>
+
+</div>
+</section>
 </form>
 </body>
 </html>
