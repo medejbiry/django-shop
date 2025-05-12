@@ -13,6 +13,7 @@
                 <button>logout</button>
             </form>
             <a href="{% url 'cart:page' %}"> Cart </a>
+            <a href="{% url 'orders:track_page' %}"> My Orders </a>
     {% else %} 
         <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:register' %}">Register</a>
         <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:login' %}">Login</a>

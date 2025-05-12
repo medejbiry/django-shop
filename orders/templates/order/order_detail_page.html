@@ -1,0 +1,40 @@
+{% extends 'Home.html'%} {% block content %}
+
+
+
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg space-y-6">
+      <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">
+        <p>Order Number {{order.id}}</p>
+      </h1>
+      <div class="w-full">
+        <div>
+            <p>Updated {{order.created_at}}</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-5 gap-6">
+        {% for product in orderItems %}
+        <div
+          id="order-cards-container"
+          class="space-y-6 bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        >
+          <div class="text-md font-semibold text-gray-800">
+            {{product.product.name}}
+          </div>
+          <div class="text-sm text-gray-500 mb-2">
+            <img
+              class="aspect-square w-[70%] mx-auto"
+              src="{{product.product.image.url}}"
+              alt=""
+            />
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+      <div class="w-full">
+
+      </div>
+    </div>
+
+
+{% endblock %}

@@ -1,13 +1,15 @@
 {% extends 'Home.html' %}
 {% block content %}
-<div class="w-[80%] mx-auto">
+<div class="w-[80%] mx-auto mt-20">
     <div class="grid grid-cols-10 gap-3">
-        <div class="col-span-4">
-            <img
-            class="w-[80%] object-cover rounded-t-lg"
-            src="{{ product.image.url  }}"
-            alt="Product image"
-            />
+        <div class="col-span-4 ">
+            <div class="w-[80%] object-cover rounded-lg shadow-xl">
+                <img
+                class="rounded-lg "
+                src="{{ product.image.url  }}"
+                alt="Product image"
+                />
+            </div>
         </div>
         <div class="col-span-5 space-y-6">
             <div class="flex justify-between">
@@ -21,7 +23,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="product_id" value="{{product.id}}" id="">
                 <div class="w-full flex justify-center">
-                    <button class=" py-3 w-1/2 bg-[#fa6c0086] hover:bg-[#fa6c00] rounded-xl text-xl">Add To Cart</button>
+                    <button class=" py-3 w-1/2 bg-[#3e68e7] hover:bg-[#3051b3] rounded-xl text-xl text-white font-semibold">Add To Cart</button>
                 </div>
             </form>
             
