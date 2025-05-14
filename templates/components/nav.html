@@ -1,21 +1,32 @@
-<nav class="flex w-full space-x-4 navBar" >
-    <a class="w-fit px-3  rounded  py-1 text-white" href="/">Home</a>
-    <a class="w-fit px-3  rounded  py-1 text-white" href="{% url 'products:list'  %}">Products</a>
-    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='cpu' %}">Processors</a>
-    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='gpu' %}">Graphic Cards</a>
-    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='ram' %}">Ram</a>
-    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='motherboards' %}">MotherBoards</a>
-    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='power-supplies' %}">Power Suplies</a>
-    <a class="w-fit px-3  rounded py-1 text-white" href="{% url 'products:cat' slug='storage' %}">Storage</a>
+{% load static %}
+<nav id="nav" class="flex w-full space-x-4 navBar justify-between px-20" >
+    <div>
+        <a class="w-fit px-3  rounded  py-1 text-white" href="/">Home</a>
+        <a class="w-fit px-3  rounded  py-1 text-white" href="{% url 'products:list'  %}">Products</a>
+
+    </div>
     {% if user.is_authenticated %}
-            <form class="logout" action="{% url 'users:logout' %}" method="post">
+        <div class="flex">
+            <form class="w-fit px-3  rounded  py-1 text-white" action="{% url 'users:logout' %}" method="post">
                 {% csrf_token %}
                 <button>logout</button>
             </form>
-            <a href="{% url 'cart:page' %}"> Cart </a>
-            <a href="{% url 'orders:track_page' %}"> My Orders </a>
+            <a class="w-fit px-3  rounded  py-1 text-white" href="{% url 'cart:page' %}"> <img src="{% static 'images/cart.png' %}" class=" w-6 rounded-lg " alt=""> </a>
+            <a class="w-fit px-3  rounded  py-1 text-white" href="{% url 'orders:track_page' %}"> My Orders </a>
+        </div>
     {% else %} 
+    <div>
         <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:register' %}">Register</a>
         <a class="w-fit px-3 rounded  py-1 text-white" href="{% url 'users:login' %}">Login</a>
+    </div>
     {% endif %}
 </nav>
+<div id="hidden-nav" class="w-fit mx-auto space-x-2">
+    <a class="w-fit px-3  rounded py-2 font-semibold text-md text-blue-500" href="{% url 'products:cat' slug='cpu' %}">Processors</a>
+    <a class="w-fit px-3  rounded py-2 font-semibold text-md text-blue-500" href="{% url 'products:cat' slug='ram' %}">Ram</a>
+    <a class="w-fit px-3  rounded py-2 font-semibold text-md text-blue-500" href="{% url 'products:cat' slug='motherboards' %}">MotherBoards</a>
+    <a class="w-fit px-3  rounded py-2 font-semibold text-md text-blue-500" href="{% url 'products:cat' slug='power-supplies' %}">Power Suplies</a>
+    <a class="w-fit px-3  rounded py-2 font-semibold text-md text-blue-500" href="{% url 'products:cat' slug='storage' %}">Storage</a>
+    <a class="w-fit px-3  rounded py-2 font-semibold text-md text-blue-500" href="{% url 'products:cat' slug='gpu' %}">Graphic Cards</a>
+
+</div>

@@ -4,7 +4,7 @@ body{
  background-color: #eff3f6;
 }
 .navBar{
-    background-color: #fa6c0086;
+    background-color: #3e68e7;
     padding: 10px 10px;
 }
 .orongeColor{
@@ -14,4 +14,7 @@ body{
     padding: 5px 15px;
     box-shadow: 5px 5px 15px 0 rgb(199, 199, 199);
 
+}
+#hidden-nav{
+    display: none;
 }

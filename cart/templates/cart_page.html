@@ -42,14 +42,20 @@
             <p class="text-lg font-semibold">{{item.item.product.price}} MAD</p>
           </div>
           <div class="flex justify-center items-center">
-            <input
-              type="number"
-              class="w-10"
-              name=""
-              value="{{ item.item.quantity }}"
-              id=""
-            />
-            <a href="{% url 'cart:remove-item' item.item.id %}"> - </a>
+            <button>
+              <a
+                href="{% url 'cart:increase-quantity' item.item.id %}"
+                class="text-[#3e68e7]   font-bold text-2xl  rounded"
+              >+</a>
+            </button>
+            <p class="mx-3 text-xl text-[#3e68e7] font-bold" >{{ item.item.quantity}}</p>
+            <button>
+              <a
+                href="{% url 'cart:decrease-quantity' item.item.id %}"
+                class="text-[#3e68e7]   font-bold text-2xl rounded"
+              >−</a>
+            </button>
+            {% comment %} <a href="{% url 'cart:remove-item' item.item.id %}"> - </a> {% endcomment %}
           </div>
           <div class="flex justify-center items-center">
             <p class="text-lg font-semibold text-[#fa6c0086]">{{item.total}}</p>

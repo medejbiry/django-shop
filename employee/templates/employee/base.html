@@ -9,9 +9,52 @@
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
-    <section class="mx-auto ">
+    <section class="mx-auto "> 
+      <div class="">
+        <form class="w-fit px-3  rounded  py-1 text-black" action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button>logout</button>
+        </form>
+      </div>
+        {% if messages %}
+          <div class="max-w-4xl mx-auto my-4">
+          {% for message in messages %}
+            <div class="p-4 rounded text-white mb-4 {% if message.tags == 'success' %}bg-green-500{% else %}bg-red-500{% endif %}">
+              {{ message }}
+            </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
       {% block content %}
-      <h1 class="text-5xl font-bold">Welcome to The Best PC Parts Shop</h1>
+      <h1 class="text-5xl font-bold">Welcome </h1>
+      
+      <section>
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+          <h1 class="text-2xl font-semibold text-center text-gray-800 mb-6">All Orders</h1>
+          
+          <table class="min-w-full table-auto border-collapse">
+            <thead>
+              <tr class="bg-gray-200 text-left text-sm font-medium text-gray-600">
+                <th class="px-4 py-2 border-b">Order ID</th>
+                <th class="px-4 py-2 border-b">Date</th>
+                <th class="px-4 py-2 border-b">Status</th>
+                <th class="px-4 py-2 border-b"></th>
+              </tr>
+            </thead>
+            <tbody >
+              {% for order in orders %}
+                  <tr>
+                      <td class="px-4 py-2 border-b">{{order.id}}</td>    
+                      <td class="px-4 py-2 border-b">{{order.created_at}}</td>    
+                      <td class="px-4 py-2 border-b">{{order.status}}</td>
+                      <td class="px-4 py-2 border-b"><a href="{% url 'employee:action' order.id %}">Expand</a></td>    
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       {% endblock %}
     </section>

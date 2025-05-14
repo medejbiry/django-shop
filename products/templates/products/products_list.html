@@ -1,4 +1,6 @@
 {% extends 'Home.html' %}
+{% load static %}
+
 {% block content %}
 <div class="container mx-auto px-4 mt-5 grid lg:grid-cols-5 grid-cols-3 gap-10">
     {% for product in products%}
@@ -18,11 +20,22 @@
                     <p class="text-[#3e68e7] font-semibold">{{product.price }} MAD</p>
                 </div>
                 <!-- Product actions-->
-                <div class="p-4 pt-0 border-t border-gray-200 bg-transparent">
+                <div class="p-2 pt-2  border-t border-gray-200 bg-transparent flex justify-between items-center">
                     <div class="text-center">
                         <a
                          href="{% url 'products:page' id=product.id %}"
-                        class="inline-block bg-[#3e68e7] mt-4 px-4 py-2  text-white font-bold rounded  hover:bg-[#3051b3] transition">View Details</a>
+                        class="inline-block bg-[#3e68e7] px-4 py-2  text-white font-bold rounded  hover:bg-[#3051b3] transition">View Details</a>
+                    </div>
+                    <div>
+                        <form action="{% url 'cart:add-to-cart' %}" method="post">
+                          {% csrf_token %}
+                          <input type="hidden" name="product_id" value="{{product.id}}" id="">
+                          <div class="w-full flex justify-center">
+                              <button class="border border-2 border-[#3e68e7] rounded-lg p-1">
+                                <img src="{% static 'images/cart.png' %}" class=" w-8 rounded-lg " alt="">
+                              </button>
+                          </div>
+                        </form>
                     </div>
                 </div>
             </div>

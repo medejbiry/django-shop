@@ -70,3 +70,21 @@ def add_order(request):
                 order_item.save()
         return redirect("cart:page")
     return redirect("cart:page")
+
+
+def increase_quantity(request, item_id):
+    item = get_object_or_404(CartItem, id=item_id, user=request.user)
+    if item.quantity < item.product.stock:
+        item.quantity += 1
+        item.save()
+
+    return redirect('cart:page')
+@login_required
+def decrease_quantity(request, item_id):
+    item = get_object_or_404(CartItem, id=item_id, user=request.user)
+    if item.quantity > 1:
+        item.quantity -= 1
+        item.save()
+    else:
+        item.delete()
+    return redirect('cart:page')

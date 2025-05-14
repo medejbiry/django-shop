@@ -4,17 +4,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
     {% include 'components/nav.html'%}
-    <section class="mx-auto ">
+    <section class="mx-auto">
       {% block content %}
-      <h1 class="text-5xl font-bold">Welcome to The Best PC Parts Shop</h1>
+      <h1 class="text-5xl font-bold text-center mt-5 mb-20">Welcome to The Best PC Parts Shop</h1>
+      <div class="grid grid-cols-10">
+        <div class="col-span-1 ">
+          <div class="">
+            <p>Gategories</p>
+            <div class="grid grid-rows-7">
+                <a class="w-fit px-3  rounded py-1 text-blue-500" href="{% url 'products:cat' slug='cpu' %}">Processors</a>
+                <a class="w-fit px-3  rounded py-1 text-blue-500" href="{% url 'products:cat' slug='ram' %}">Ram</a>
+                <a class="w-fit px-3  rounded py-1 text-blue-500" href="{% url 'products:cat' slug='motherboards' %}">MotherBoards</a>
+                <a class="w-fit px-3  rounded py-1 text-blue-500" href="{% url 'products:cat' slug='power-supplies' %}">Power Suplies</a>
+                <a class="w-fit px-3  rounded py-1 text-blue-500" href="{% url 'products:cat' slug='storage' %}">Storage</a>
+                <a class="w-fit px-3  rounded py-1 text-blue-500" href="{% url 'products:cat' slug='gpu' %}">Graphic Cards</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-9 px-20">
+          <h1 class="mb-10 text-2xl text-[#3e68e7] font-semibold">Our Latest Products</h1>
+          <div class="grid grid-cols-5 gap-5">
+                  {% for product in products %}
+                  <div class="h-[250px] border border-2 border-[#3e68e7] bg-white p-2 rounded-lg relative">
+                    <img src="{{product.image.url}}" class=" w-full"  alt="" />
+                    <div class="absolute bottom-0 w-full left-1/2 -translate-x-1/2 px-4 py-2">
+                      <div class="p-4 pt-0 border-t border-gray-200 bg-transparent"></div>
+                      <div class="flex justify-between items-center">
+                        <div class="text-center">
+                          <a
+                          href="{% url 'products:page' id=product.id %}"
+                          class="inline-block bg-[#3e68e7]  px-2 py-3  text-white font-bold rounded text-sm  hover:bg-[#3051b3] transition">View Details</a>
+                        </div>
+                        <form action="{% url 'cart:add-to-cart' %}" method="post">
+                          {% csrf_token %}
+                          <input type="hidden" name="product_id" value="{{product.id}}" id="">
+                          <div class="w-full flex justify-center">
+                              <button class="border border-2 border-[#3e68e7] rounded-lg p-1">
+                                <img src="{% static 'images/cart.png' %}" class=" w-8 rounded-lg " alt="">
+                              </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+           </div>
+        </div>
+      </div>
 
+      
       {% endblock %}
     </section>
+    <script src="{% static 'js/main.js' %}"  defer></script>
   </body>
 </html>
